@@ -8,9 +8,9 @@ TidalCycles sú napísané v relatívne novom, málo rošírenom, funcionálnom 
 >Všetky príkazy sa spúšťajú kliknutím na button |>|, alebo stlačením klávesovej skratky ```Shift+Enter```. Ak je to nutné, pozrite si kapitolu o [Estuary](1_estuary.md).
 
 ## Ticho
-Najdoležitejšia vec pre každého hudobníka je vedieť spraviť (a byť) ticho. Keďže hudba je vlastne nejaká usporiadané množina zvukov a ticha, ovládnuť svoj nástroj tak aby bol ticho je nevyhnutné. Pre počítač je ľahké aby hral bez prestávky, neunavne, no pre ľudí to nemusí byť najpríjemnejšie. Keď chceme ticho v MiniTidale, zmažeme kód, napíšeme ```silence``` a spistíme.
+Najdoležitejšia vec pre každého hudobníka je vedieť spraviť (a byť) ticho. Keďže hudba je vlastne nejaká usporiadané množina zvukov a ticha, ovládnuť svoj nástroj tak aby bolo ticho je nevyhnutné. Pre počítač je ľahké, aby hral bez prestávky, no pre ľudí nemusí byť najpríjemnejšie to počúvať. Keď chceme spraviť ticho v MiniTidale, ukončiť čo nám práve hrá, zmažeme kód, napíšeme ```silence``` a spistíme.
 
-
+>Je ešte aj iná možnosť, použiť parameter hlasitosti ```gain```, pozri nižšie.
 
 
 
@@ -129,7 +129,7 @@ n "0 1 2 <5 ~>" # s "strum"
 
 
 ## Efekty
-
+TODO
 hcutoff
 cutoff
 pan
