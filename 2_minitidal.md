@@ -87,7 +87,7 @@ n "0 1 2 3" # s "alphabet"
 ```"0 1 2 3"``` je tiež pattern, takže sa s tým môžeme hrať
 ```haskell
 n "<0 20> 1*2 2/2 3" # s "alphabet" 
-```haskell
+```
 
 >V posledných dvoch príkladoch sa objavil nový znak ```#``` a o chvíľku k nemu pribudne aj ```$```. Čo presne tieto znaky znamenajú je už záležitosť Haskellu, preto to nebudem nejako rozoberať, ale je to o spájaní jednotlivých funicíí. časom sa dozvieme viac.
 
