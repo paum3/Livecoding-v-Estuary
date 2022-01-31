@@ -126,6 +126,10 @@ n "0 1 2 <5 ~>" # s "strum"
 ] gain 0.8
 ```
 
+every 3 (hurry "0.5 2") $ every 2 (# speed 2) $ n "0 1 2 3"  #s "strum" # silence
+every 2 (hurry "3 2 0.5 6 2") $  n "0 1 2 3"  #s "strum" # silence
+n "[0, 1*5, 2*2, 3*3]" # s "strum" # pan ( slow 4 $ saw  ) # silence  
+sometimesBy 0.7 (hurry "50 20") $ n "4? 5 6 7" # s  "strum" # silence
 
 
 ## Efekty
