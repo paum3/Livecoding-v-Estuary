@@ -20,11 +20,15 @@ solid().out()
 
 
 ### Zdroje obrazu
+Ako zdroje, materiál, ktorý sa dá v hydre používať sú k dispozícii dve kategórie:
+* Hotové zdroje (kamera, video, obrázok, desktop)
+* Generované zdroje (farba,geometrické tvary, oscilátor,šum, voronoi )
 
-Oscilátor
-```javascript
-osc(freq,sync,offset)
- ```
+Z jednotlivými zdrojmi sa dá manimulovať, modulovať, alebo ich pomocou kompozitných funckií kombinovať.
+
+Poďme na to:
+
+
 
 Kamera
 ```javascript
@@ -52,6 +56,18 @@ src(s0).out()
 
 Geometrické zdroje
 
+
+Shapes
+```javascript
+shape(2).scale(0.01).out(o0)
+```
+
+
+Oscilátor
+```javascript
+osc(freq,sync,offset)
+ ```
+
 Noise (Šum)
 
 ```javascript
@@ -64,11 +80,15 @@ Voronoi
 voronoi(10, 0).out(o0)
 ```
 
-Shapes
-```javascript
-shape(2).scale(0.01).out(o0)
-```
+### Kompozitné funkcie
 
+blend()
+
+diff()
+
+mult()
+
+add() 
 
 
 Manipulácia
@@ -96,7 +116,7 @@ scrollX
 scrollY
 
 
-Farba
+# Farba
 
 posterize
 
