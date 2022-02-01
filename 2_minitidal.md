@@ -3,93 +3,118 @@
 MiniTidal je výborný livecodingový nástroj pre hudbu. Je to síce trochu chudobnejšia verzia pôvodných [TidalCycles](https://tidalcycles.org/), ktoré sú samostaným programom, ale možnosti MiniTidalu sú aj tak nesmierne. Nehovoriac o tom, že v prostredí Estuary je možnosť pracovať kolaboratívne po sieti.
 TidalCycles sú napísané v relatívne novom, málo rošírenom, funcionálnom jazyku Haskell. Ak vás zaujíma viac o Haskelli, na webe si určite nájdete zaujímavé zdroje. Tu budeme rozoberať len to, čo budete potrebovať ku hraniu v MiniTidale. Veľmi dobrým zdrojom je originálna [príručka k TidalCycles](https://tidalcycles.org/docs/reference), no treba si dať pozor, lebo nie všetko je implementované do MiniTidalu.
 
->Poznámka: V TidalCycles je niekoľko druhov zátvoriek, z ktorých každá má vždy svoj pár: ```() {} [] <>```, rovnako ako aj uvodzovky ```""```.
+>Poznámka: V TidalCycles je niekoľko druhov zátvoriek, z ktorých každá vždy MUSÍ mať svoj pár: ```() {} [] <>```, rovnako ako aj uvodzovky ```""```.
 
->Všetky príkazy sa spúšťajú kliknutím na button |>|, alebo stlačením klávesovej skratky ```Shift+Enter```. Ak je to nutné, pozrite si kapitolu o [Estuary](1_estuary.md).
+>Všetky príkazy sa spúšťajú kliknutím na button |>|, alebo stlačením klávesovej skratky ```Shift+Enter```. Ak je to nutné, pozrite si kapitolu o [Estuary](1_estuary.md). Ak máte v kóde chybu, objaví sa žltý text "Syntax", čo v znamená chybu syntaxe. Proste ste niečo zle napísali, preklep, chýba zátvorka a pod. V takom prípade sa nič vážne nedeje, MiniTidal pokračuje v hraní predchádzajúceho kódu a vy sa snažíte nájsť a opraviť chybu.
 
 ## Ticho
-Najdoležitejšia vec pre každého hudobníka je vedieť spraviť (a byť) ticho. Keďže hudba je vlastne nejaká usporiadané množina zvukov a ticha, ovládnuť svoj nástroj tak aby bolo ticho je nevyhnutné. Pre počítač je ľahké, aby hral bez prestávky, no pre ľudí nemusí byť najpríjemnejšie to počúvať. Keď chceme spraviť ticho v MiniTidale, ukončiť čo nám práve hrá, zmažeme kód, napíšeme ```silence``` a spistíme.
+Najdoležitejšia vec pre každého hudobníka je vedieť spraviť (a byť) ticho. Ono to nie je také jednoduché ako sa zdá, len tak byť, nič nerobiť, len počúvať čo sa deje okolo. Koľko takto vydržíte ? Čím viac, tm lepšie pre vás. Počúvať okolité zvuky zlepšuje vašu schopnosť počuť, navyše hudba sveta vie byť krásna. Poznáte Johna  Cagea a jeho skladbu 4'33? Prečítajte si o nej niečo. 
 
->Je ešte aj iná možnosť, použiť parameter hlasitosti ```gain```, pozri nižšie.
+Ovládnuť svoj nástroj tak aby bolo ticho je nevyhnutné. navyše, pre počítač je ľahké, aby hral bez prestávky, no pre ľudí nemusí byť najpríjemnejšie to počúvať. Keď chceme spraviť ticho v MiniTidale, ukončiť čo nám práve hrá, zmažeme kód, napíšeme ```silence``` a spustíme. Je ešte aj iná možnosť, použiť parameter hlasitosti ```# gain 0```, o tom ale neskôr.
+
+>Poznámka: V Estuary funguje UNDO, klasická klávesová klávesová skratka ```Ctrl + z``` spraví svoju robotu rada.
 
 
 
-## Sample
-Sample sú vzorky zvuku, ktoré používa Tidal. na ich prehrávanie je príkaz ```sound``` alebo ```s```, sú to synonymá.
+# Ako funguje TidalCycles ?
+
+Tento jazyk je macher na patterny, ich kombinovaniu a algoritmicácii - teda ich zmeny v čase na základe nejakého algoritmu. Kód v TidalCyles je častokát krátky a popri tom vie poskytnuť dostatočnú pestrosť a variabilitu. Veď uvidíte. No a teda najdôležitejšia vec - TidalCycles hrá napísaný kód v _loope_ - teda dookola.
+A druhá najdoležitejšia vec je, že zdrojom zvuku sú zvukové nahrávky, v počítačovej hudbe nazývané ako _sample_. TidalCycles robí teda to, že  prehráva sample v zvolenom poradí, tempo, rýchlosti, panoráme (v ktorom uchu - stereo), s efektom, hlasitosťou atď. Znie to ako veľmi jednoduchý nápad, no to ako to dokáže obmieňať je naozaj veľmi dobré. Poďme teda na to!
+
+
+* Základy
+* Patterny
+* Poradie samplov
+* Náhoda
+
+## Základy
+Poďme sa pozrieť na nejaký jednoduchý príklad.  Skopírujte si tento kód do Estuary, nezabudnite si vybrať z drop-down menu MiniTidal a spusťťe ho ```Shift + Enter```.
+
 ```haskell
--- zahrá bassdrum
 sound "bd"
 ```
+Čo by ste mali počuť je zvuk basového bubna (_bass drum_, alebo kopák), v opakujúcom sa pulze:
+```bd    bd    bd    bd    bd    bd    bd    bd    bd```
+Teraz to zmaže a spusťte toto:
+```silence```
+Kopák dohral. Čo sa to teda dialo? Príkazom ```sound "bd"``` ste prikázali Tidalu, že si má nachystať nejaký zvuk, konkrétne ```"bd"```. A on ho teda, ako sa píše, pekne použije a hrá dokolečka, v _loope_. ```silence``` to všetko ukončil. Názvy samplov, ktoré sa píšu do uvodzoviek, môžu byť rôzne, ich zoznam je [tu](Zoznam samplov). Vyskúšaj, čo sa ti pozdáva. Príkaz ```sound``` má aj svoju kratšiu podobu ako ```s``` a teda mohlo by to vyzerať ak takto a bude to robiť to isté.
 ```haskell
 --to isté, len kratšie na zapísanie
 s "bd"
 ```
-To čo je napísané v uvodzovkách, je názov sampla. Zoznam všetkých dostupných samplov je [tu](Zoznam samplov).
+Tie uvodzovky ```"```, sú veľmi dôležité a všetko čo je v nich je _pattern_. Pokračujeme teda tam.
+
 
 ## Patterny
-Kľúčom v TidalCycles sú paterny a ich modifikácie. Pattern je to, čo je v uvodzovkách, pričom veľa parametrov vie byť zapísaných ako pattern.
+Kľúčom v TidalCycles sú patterny a ich modifikácie. Pattern je to, čo je v uvodzovkách. Ako pattern vie byť zapísané skoro všetko. Na teraz to budem demonštrovať len na jednoduchých prikladoch s ```s```. Neskôr sa budú patterny objavovať všade a veľa. V patternoch sa používajú rôzne znaky a zátvoreky, a všetko má svoju funkciu. Na prvý pohľad to môže vyzerať zložito, no ver tomu, že pár kráta si to vyskúšaš a bude to jasné.
 
-Strieda tieto dva sample v jednom cylka a stále dookola.
+Pripomínam, že TidalCycles hrá všetko v loope, takže patterny sa opakujú dookola a všetky "záležitosti", ktoré do patternu zapíšeš sa Tidal pokúsi zahrať za rovnaký čas jedného cyklu. Počet a hustota _udalostí_ závisí len na tebe a cpu.
+
+Extrémny príklad na začiatok všetko vysvetlí.
 ```haskell
-s "bd sd"
+s "bd sd arpy strum sid strum sid cp bd sid sid arpy bd"
 ```
 
-##### Opakovanie
-Za rovnaký čas zahrá teraz tri ```bd```.
-```haskell
-s "[bd bd bd] sd"
-```
+Všetky sample zmestí do jedného cyklu. Jasné?
 
+V patternoch sa dajú používať tieto finty:
 
-To isté, len zapísané jednoduchšie. Pozn. TidalCycles poižíva tzv. mininotáciu, kde jednotlivé znaky majú svoj význam. Preto na prvý pohľad sofistikovanejší TidalCycles kód vyzerá nezrozumiteľne, ale ked sa tomu človek rozumie, vie že to má jednú veľkú výhodu! Netreba veľá pisať!
+| Kód | ako znie | popis |
+| --------------- | --------------- | --------------- |
+|```s "bd sd"```            | bd ---------sd----------| strieda dva sample |
+|```s "[bd bd bd db] sd"``` | bd bd bd bd sd----------| *multiplikovanie* prvý sample zopakuje 4 krát za pôvodný čas jedného|
+|```s "bd*4 sd"```          | bd bd bd bd sd----------| to isté, napísane skratkou |
+|```s "bd/3 sd"```|   | bd zahrá len každý tretí cyklus, opak *multiplikovania* |
+|```s "<bd sd>"```|   | v každom cykle si vyberie len jeden "prvok" *substitúcia* |
+|```s "bd \| sd"```|   | náhodný výber prvku *náhoda* |
+|```s "[bd*3,  sd*2]"```|   | zároveň ako zahrá 3xbd, zahrá v druhej vrstve 2xsd *polyrytmus* |
 
-```haskell
-s "bd*3 sd"
-```
-
-Opakom znamnieka ```*``` je ```/```. Čo spraví nasledujúci príklad?
+Čo spravia nasledujúce príklady?
 ```haskell
 s "bd*3 sd/2
 ```
-
-
-##### Substitúcia
-
-Z informácií, ktoré sú medzi ```<``` a ```>``` vyberie v každom cykle len jednu, ide po poradí a opakuje od začiatku. Takže nasledujúci kód zahrá: bd*3 sd | bd*20 sd | a tak dookola.
 ```haskell
 s "<bd*3 bd*20> sd"
 ```
-
-##### Kombinácia / Polyrytmy 
-Kombinácia v tomto prípade znamená, že sa budú hrať naraz v všetky vrstvy/línie/hlasy - akokoľvek to nazveme. Všetky vrstvy sú ohraničené v hranatých zátvorkách a jednotlivé vrstvy sa oddelia čiarkou.
 ```haskell
 s "[ cp, bd*5 , sd*2 ]"
 ```
-Výsledok vyzerá nejako takto:
-```
-cp -- -- -- --
-bd bd bd bd bd
-sd -- -sd -- -
-```
+
+
+
 
 ## Poradie samplov
-To že používame rôzne slovné skratky na pomenovanie samplov ```bd```, ```cp``` a pod. sme už videli. Čo to ale má znamenať? Skutočnosť je takáto. Tieto názvy samplov sú v vlastne  názvy  [adresárov](https://github.com/dktr0/cybernetic-samples/tree/main/sounds), v ktorých sú uložené jednotlivé zvuky s tým, že počet zvukov v jednotlivých adresároch je ľubovoľný. V zozname samplov je v zátvorke počet samplov, ktoré daný adresár obsahuje. K jednotlivým zvukom prisupujeme pomocou ```:``` a poradového čísla s tým, že (v počítačoch to tak býva) je **prvé číslo 0**.
+To že používame rôzne slovné skratky na pomenovanie samplov ```bd```, ```cp``` a pod. sme už videli. Čo to ale má znamenať? Skutočnosť je takáto. Tieto názvy samplov sú v vlastne  názvy  [adresárov](https://github.com/dktr0/cybernetic-samples/tree/main/sounds), v ktorých sú uložené jednotlivé zvuky s tým, že počet zvukov v jednotlivých adresároch je rôzny. V zozname samplov dolu, je v zátvorke počet samplov, ktoré daný adresár obsahuje. Ak teda napíšem ```s "strum"``` Tidal použije prvý sampel/súbor v adresári, ktorý sa volá "strum". Ak chcem zahrať iný sampel z toho adresára, použijem jeho poradové číslo s tým, že začínam od nuly. 
+```s "strum:2"``` zahrá teda ktorý sampel? No predsa tretí!
 
 ```haskell
 s "alphabet:0 alphabet:1 alphabet:2 alphabet:3"
 ```
 
-Rovnaký výsledok vieme zapísať aj jednoduchšie pomocou funcie ```n```, ako *number*
+TidalCycles obsahuje samozrejme rozne iné príkazy, ktoré treba postupne spoznávať. Vôbec neide o to poznať všetky, ale na druhej strane čím viac ich človek pozná, tým má viac možností. Napríklad na poradadové číslo samplu je príkaz ```number```, alebo lepšie skratkou len ```n```, za ktorým nasleduje poradové číslo sampla, alebo pattern čísel. A to je príve to. Patterny máš rád.
+
+Syntax je takáto:
+```n PATTERN # s PATTERN```
+Všímni si ```#```. To je dôležité, robí to to, že spoj PATTERN poradia s PATTERNOM samplov.
+
 
 ```haskell
-n "0 1 2 3" # s "alphabet"
+n "0 1 2 3" # s "strum"
 ```
+
+```haskell
+n "0 1 2 3" # s "strum sid"
+```
+
 ```"0 1 2 3"``` je tiež pattern, takže sa s tým môžeme hrať
 ```haskell
-n "<0 20> 1*2 2/2 3" # s "alphabet" 
+n "<0 20> 1*2 2/2 3" # s "strum | sid" 
 ```
 
->V posledných dvoch príkladoch sa objavil nový znak ```#``` a o chvíľku k nemu pribudne aj ```$```. Čo presne tieto znaky znamenajú je už záležitosť Haskellu, preto to nebudem nejako rozoberať, ale je to o spájaní jednotlivých funicíí. časom sa dozvieme viac.
+>V posledných dvoch príkladoch sa objavil nový znak ```#``` a o chvíľku k nemu pribudne aj ```$```. Tieto znaky sú špeciálne funkcie, ktoré spájajú patterny. Viac možno neskôr.
+
+
+
 
 ## Hlasitosť / Gain
 
