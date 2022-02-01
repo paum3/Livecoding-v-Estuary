@@ -30,7 +30,7 @@ A druhá najdoležitejšia vec je, že zdrojom zvuku sú zvukové nahrávky, v p
 * [Zmena rýchlosti cyklu](minitidal/5_rychlost.md)
 * [Spájanie patternov](minitidal/6_spajanie.md)
 * [Oscilátory](minitidal/7_oscilatory.md)
-* 
+
 
 
 
