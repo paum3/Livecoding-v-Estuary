@@ -27,38 +27,16 @@ A druhá najdoležitejšia vec je, že zdrojom zvuku sú zvukové nahrávky, v p
 * [Poradie samplov](minitidal/2_number.md)
 * [Kontrolné patterny](minitidal/3_control.md)
 * [Náhoda](minitidal/4_nahoda.md)
+* [Zmena rýchlosti cyklu](minitidal/5_rychlost.md)
+* [Spájanie patternov](minitidal/6_spajanie.md)
+* [Oscilátory](minitidal/7_oscilatory.md)
+* 
 
 
 
 
 
 
-
-
-## Zmena rýchlosti
-
-```haskell
-fast "1 4" $  n "<0 20> 1*2 2/2 3" # s "casio bd sid "
-```
-
-## Spájanie / stack
-V Estuary môžete použiť ľubovoľný počet slotov a v každom môže niečo bežať. Niekedy je ale výhodnejšie mať kód pod kontrolou - napríklad kôli hlastosti. Takže napríklad, máme tieto dva patterny v zvlášť slotoch
-
-```haskell
-fast "1 4" $  n "<0 20> 1*2 2/2 3" # s "casio bd sid "
-```
-```haskell
-n "0 1 2 <5 ~>" # s "strum"
-```
-
-Ak ich chceme spojiť do jedného použijeme ```stack```
-
-```haskell
-stack [
-fast "1 4" $  n "<0 20> 1*2 2/2 3" # s "casio bd sid " ,
-n "0 1 2 <5 ~>" # s "strum"
-] gain 0.8
-```
 
 every 3 (hurry "0.5 2") $ every 2 (# speed 2) $ n "0 1 2 3"  #s "strum" # silence
 every 2 (hurry "3 2 0.5 6 2") $  n "0 1 2 3"  #s "strum" # silence
