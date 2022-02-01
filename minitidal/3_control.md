@@ -30,3 +30,12 @@ Pre zmenu rýchlosti prehrávania sampla je príkaz ```speed``` . Číslo za ní
 ```haskell
 s "alphabet*4" # speed "0.8 1.1 5 -1.1"
 ```
+
+
+## Vowel
+
+```vowel``` je filter, ktorý tvaruje zvuk na základe zvolenej samohlásky
+
+```haskell
+sound "sd*20" # vowel "a e i o u"
+```

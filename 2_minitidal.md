@@ -35,17 +35,6 @@ A druhá najdoležitejšia vec je, že zdrojom zvuku sú zvukové nahrávky, v p
 
 
 
-
-## Hlasitosť / Gain
-
-```gain``` + číslo v rozsahu <0,1>
-
-```haskell
-n "<0 20> 1*2 2/2 3" # s "casio bd sid " # gain 0.5
-```
-
->Desatinné čísla sa píšu s bodkou takto 3.14.
-
 ## Zmena rýchlosti
 
 ```haskell

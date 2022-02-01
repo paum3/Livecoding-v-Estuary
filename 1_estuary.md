@@ -50,17 +50,17 @@ V spodnej časti obrazovky je k dospozícii Terminal/Chat. Toto okno slúži na 
 ["countDownAndCode","def","fourbyeight","fourbyseven","fulltexteditor","roulette","sandClockAndCode","stopWatchDownAndCode","tempoAndCode","threebyfive","threebyseven","threebysix","twobyfive","twobyfour","twobysix","twobythree","twobytwo","twocolumns"]
 
 
-- ```!presetview``` nastavý zvolené rozloženie (view) lokálne. V prípade ensemble iba na vašom počítači
+- ```!presetview``` nastaví zvolené rozloženie (view) lokálne. V prípade ensemble iba na vašom počítači
   * ```!presetview fulltexteditor``` jeden veľký slot
   * ```!presetview threebysix``` 3x6 slotov
   * ```!presetview def``` default
 
 - ```!activeview``` vypíše momentálne zvolené rozloženie (view)
 
-- ```!dumpview``` vypíše nastavenie momentálne zvoleného rozloženia 
+- ```!dumpview``` vypíše nastavenie momentálne zvoleného rozloženia
 - ```!publishview``` nastaví zvolené rozloženie (view) pre celý ensemble.
-- ```!localview audiomap``` vypíše zoznam samplov ktoré sú dostupné pre MiniTidal 
-- ```!localview []``` zobrazí len vizuály (lokálny display) 
+- ```!localview audiomap``` vypíše zoznam samplov ktoré sú dostupné pre MiniTidal
+- ```!localview []``` zobrazí len vizuály (lokálny display)
 
 
 #### Tempo

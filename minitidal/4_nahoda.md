@@ -4,8 +4,18 @@ Princíp náhody, náhodnosti nie je v hudbe ničím novým. Termíny ako stocha
 
 ## Náhodný prvok z patternu
 
+Znak ```|``` by sa dal preložiť ako _alebo_. V každom cykle sa použije len jede prvok z dvoch možností.
+
+```haskell
+s "hh | cp | sd | bd"
+```
+
+
 ## Náhodné použitie prvku v patterne
 
+```haskell
+s "hh? cp? sd? bd?"
+```
 
 ## Generátor náhodných čísel
 
