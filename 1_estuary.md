@@ -7,12 +7,12 @@
 
 - [MiniTidal](2_minitidal.md): odľahčená verzia Tidalcycles pre vytváranie hudobných patternov (vyvoril/spravuje Alex McLean)
 - Punctual: pre audio / video syntézu (vyvoril/spravuje David Ogborn)
-- CineCer0: pre video a typografiu (vyvoril/spravuje Estuary vývojový team)
+- CineCer0: pre video a typografiu (vyvoril/spravuje vývojový team Estuary)
 - TimeNot: for creating temporal canons (vyvoril/spravuje Alejandro Franco Briones)
-- Seis8s: na exploráciua latinskoamerických štýlov (vyvoril/spravuje Luis Navarro del Angel)
+- Seis8s: na exploráciu latinskoamerických štýlov (vyvoril/spravuje Luis Navarro del Angel)
 - Hydra: na videosyntézu (vyvoril/spravuje Olivia Jack)
 
-> Na to aby bežalo Estuary dobre, je nutné používať nejaký súčasný internetový prehliadač. Ja používam [Brave](https://brave.com/). Pred použitím si skontrolujte, či máte zvuk, napríklad na youtube.
+> Na to, aby bežalo Estuary dobre, je nutné používať nejaký súčasný internetový prehliadač. Ja používam [Brave](https://brave.com/). Pred použitím si skontrolujte, či máte zvuk, napríklad na youtube.
 
 
 [Estuary](https://estuary.mcmaster.ca/) pri prvej návšteve vyzerá takto:
@@ -36,17 +36,17 @@ Tento mód je určený, ak chcete používať Estuary sami. Nachádza sa v ňom 
 
 #### Spustenie kódu
 Keď napíšete kód, ešte sa nič nestane. Treba ho spusiť a na to sú dva spôsoby:
-  - kliknút myšou na button  |>|
-  - stlačit ```Shift + Enter```. Na toto si zvyknite. Je to jednoduchšie a týchlejšie. Nemusíte do ruky chyutať myšku.
+  - kliknúť myšou na button  |>|
+  - stlačiť ```Shift + Enter```. Na toto si zvyknite. Je to jednoduchšie a rýchlejšie. Nemusíte do ruky chytať myšku.
 
 
 
 
 #### Terminál
 
-V spodnej časti obrazovky je k dospozícii Terminal/Chat. Toto okno slúži na posielanie krátkch správ keď hráte spolu s niekym, alebo na zadávanie špeciálnych príkazov pre samotné Estuary. Príkazy sa používaju najmä na zmenu rozloženia a počet slotov, ktoré sú k dispozícii.
+V spodnej časti obrazovky je k dispozícii Terminal/Chat. Toto okno slúži na posielanie krátkych správ, keď hráte spolu s niekým alebo na zadávanie špeciálnych príkazov pre samotné Estuary. Príkazy sa používajú najmä na zmenu rozloženia a počet slotov, ktoré sú k dispozícii.
 
-- ```!listviews``` príkaz vypíše názvy rozložení obrazovky (views), ktoré sú k dispozícii
+- ```!listviews``` vypíše názvy rozložení obrazovky (views), ktoré sú k dispozícii
 ["countDownAndCode","def","fourbyeight","fourbyseven","fulltexteditor","roulette","sandClockAndCode","stopWatchDownAndCode","tempoAndCode","threebyfive","threebyseven","threebysix","twobyfive","twobyfour","twobysix","twobythree","twobytwo","twocolumns"]
 
 
@@ -64,7 +64,7 @@ V spodnej časti obrazovky je k dospozícii Terminal/Chat. Toto okno slúži na 
 
 
 #### Tempo
-Pri hraní hudby napríklad v MiniTidale je na začiatku nastavené tempo, ktoré je možné zmeniť práve prostredníctvom tohoto terminálu príkazmy:
+Pri hraní hudby napríklad v MiniTidale je na začiatku nastavené tempo, ktoré je možné zmeniť práve prostredníctvom tohto terminálu príkazmi:
 
 - ```!showtempo``` zobrazí aktuálne tempo
 - ```!setcps 1``` (60 beats per minute) Calculate 60/60 = 1, <0,1> je bezpečný rozsah

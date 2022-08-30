@@ -1,16 +1,16 @@
 # MiniTidal
 
 MiniTidal je výborný livecodingový nástroj pre hudbu. Je to síce trochu chudobnejšia verzia pôvodných [TidalCycles](https://tidalcycles.org/), ktoré sú samostaným programom, ale možnosti MiniTidalu sú aj tak nesmierne. Nehovoriac o tom, že v prostredí Estuary je možnosť pracovať kolaboratívne po sieti.
-TidalCycles sú napísané v relatívne novom, málo rošírenom, funcionálnom jazyku Haskell. Ak vás zaujíma viac o Haskelli, na webe si určite nájdete zaujímavé zdroje. Tu budeme rozoberať len to, čo budete potrebovať ku hraniu v MiniTidale. Veľmi dobrým zdrojom je originálna [príručka k TidalCycles](https://tidalcycles.org/docs/reference), no treba si dať pozor, lebo nie všetko je implementované do MiniTidalu.
+TidalCycles sú napísané v relatívne novom, málo rozšírenom funkcionálnom jazyku Haskell. Ak vás zaujíma viac o Haskelli, na webe si určite nájdete zaujímavé zdroje. Tu budeme rozoberať len to, čo budete potrebovať k hraniu v MiniTidale. Veľmi dobrým zdrojom je originálna [príručka k TidalCycles](https://tidalcycles.org/docs/reference), no treba si dať pozor, lebo nie všetko je implementované do MiniTidalu.
 
 >Poznámka: V TidalCycles je niekoľko druhov zátvoriek, z ktorých každá vždy MUSÍ mať svoj pár: ```() {} [] <>```, rovnako ako aj uvodzovky ```""```.
 
->Všetky príkazy sa spúšťajú kliknutím na button |>|, alebo stlačením klávesovej skratky ```Shift+Enter```. Ak je to nutné, pozrite si kapitolu o [Estuary](1_estuary.md). Ak máte v kóde chybu, objaví sa žltý text "Syntax", čo v znamená chybu syntaxe. Proste ste niečo zle napísali, preklep, chýba zátvorka a pod. V takom prípade sa nič vážne nedeje, MiniTidal pokračuje v hraní predchádzajúceho kódu a vy sa snažíte nájsť a opraviť chybu.
+>Všetky príkazy sa spúšťajú kliknutím na button |>|, alebo stlačením klávesovej skratky ```Shift+Enter```. Ak je to nutné, pozrite si kapitolu o [Estuary](1_estuary.md). Ak máte v kóde chybu, objaví sa žltý text "Syntax", čo znamená chybu v syntaxe. Proste ste niečo zle napísali, preklep, chýba zátvorka a pod. V takom prípade sa nič vážne nedeje, MiniTidal pokračuje v hraní predchádzajúceho kódu a vy sa snažíte nájsť a opraviť chybu.
 
 ## Ticho
-Najdoležitejšia vec pre každého hudobníka je vedieť spraviť (a byť) ticho. Ono to nie je také jednoduché ako sa zdá, len tak byť, nič nerobiť, len počúvať čo sa deje okolo. Koľko takto vydržíte ? Čím viac, tm lepšie pre vás. Počúvať okolité zvuky zlepšuje vašu schopnosť počuť, navyše hudba sveta vie byť krásna. Poznáte Johna  Cagea a jeho skladbu 4'33? Prečítajte si o nej niečo.
+Najdôležitejšia vec pre každého hudobníka je vedieť spraviť (a byť) ticho. Ono to nie je také jednoduché ako sa zdá, len tak byť, nič nerobiť a len počúvať, čo sa deje okolo. Koľko takto vydržíte ? Čím viac, tým lepšie pre vás. Počúvať okolité zvuky zlepšuje vašu schopnosť počuť, navyše hudba sveta vie byť krásna. Poznáte Johna Cagea a jeho skladbu 4'33? Prečítajte si o nej niečo.
 
-Ovládnuť svoj nástroj tak aby bolo ticho je nevyhnutné. navyše, pre počítač je ľahké, aby hral bez prestávky, no pre ľudí nemusí byť najpríjemnejšie to počúvať. Keď chceme spraviť ticho v MiniTidale, ukončiť čo nám práve hrá, zmažeme kód, napíšeme ```silence``` a spustíme. Je ešte aj iná možnosť, použiť parameter hlasitosti ```# gain 0```, o tom ale neskôr.
+Ovládnuť svoj nástroj tak, aby bolo ticho, je nevyhnutné. Navyše, pre počítač je ľahké, aby hral bez prestávky, no pre ľudí nemusí byť najpríjemnejšie to počúvať. Keď chceme spraviť ticho v MiniTidale, čiže ukončiť, čo nám práve hrá, zmažeme kód, napíšeme ```silence``` a spustíme. Je ešte aj iná možnosť, použiť parameter hlasitosti ```# gain 0```, o tom ale neskôr.
 
 >Poznámka: V Estuary funguje UNDO, klasická klávesová klávesová skratka ```Ctrl + z``` spraví svoju robotu rada.
 
@@ -18,8 +18,8 @@ Ovládnuť svoj nástroj tak aby bolo ticho je nevyhnutné. navyše, pre počít
 
 # Ako funguje TidalCycles ?
 
-Tento jazyk je macher na patterny, ich kombinovaniu a algoritmicácii - teda ich zmeny v čase na základe nejakého algoritmu. Kód v TidalCyles je častokát krátky a popri tom vie poskytnuť dostatočnú pestrosť a variabilitu. Veď uvidíte. No a teda najdôležitejšia vec - TidalCycles hrá napísaný kód v _loope_ - teda dookola.
-A druhá najdoležitejšia vec je, že zdrojom zvuku sú zvukové nahrávky, v počítačovej hudbe nazývané ako _sample_. TidalCycles robí teda to, že  prehráva sample v zvolenom poradí, tempo, rýchlosti, panoráme (v ktorom uchu - stereo), s efektom, hlasitosťou atď. Znie to ako veľmi jednoduchý nápad, no to ako to dokáže obmieňať je naozaj veľmi dobré. Poďme teda na to!
+Tento jazyk je macher na patterny, ich kombinovaniu a algoritmizácii - teda ich zmeny v čase na základe nejakého algoritmu. Kód v TidalCycles je často krátky a popri tom vie poskytnúť dostatočnú pestrosť a variabilitu. Veď uvidíte. No a teda najdôležitejšia vec - TidalCycles hrá napísaný kód v _loope_ - teda dokola.
+A druhá najdoležitejšia vec je, že zdrojom zvuku sú zvukové nahrávky, v počítačovej hudbe nazývané ako _sample_. TidalCycles robí teda to, že prehráva sample v zvolenom poradí, nastavuje tempo, rýchlosti prehrávania, panorámu (v ktorom uchu - stereo), efekty, hlasitosťou atď. Znie to ako veľmi jednoduchý nápad, no ako to dokáže obmieňať je naozaj veľmi dobré. Poďme teda na to!
 
 
 * [Základy](minitidal/0_zaklady.md)

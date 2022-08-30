@@ -1,6 +1,5 @@
-
 ## Patterny
-Kľúčom v TidalCycles sú patterny a ich modifikácie. Pattern je to, čo je v uvodzovkách. Ako pattern vie byť zapísané skoro všetko. Na teraz to budem demonštrovať len na jednoduchých prikladoch s ```s```. Neskôr sa budú patterny objavovať všade a veľa. V patternoch sa používajú rôzne znaky a zátvoreky, a všetko má svoju funkciu. Na prvý pohľad to môže vyzerať zložito, no ver tomu, že pár kráta si to vyskúšaš a bude to jasné.
+Kľúčom v TidalCycles sú patterny a ich modifikácie. Pattern je to, čo je v uvodzovkách. Ako pattern vie byť zapísané skoro všetko. Na teraz to budem demonštrovať len na jednoduchých prikladoch s ```s```. Neskôr sa budú patterny objavovať všade a veľa. V patternoch sa používajú rôzne znaky a zátvorky, všetko má svoju funkciu. Na prvý pohľad to môže vyzerať zložito, no ver tomu, že párkrát si to vyskúšaš a bude ti to jasné.
 
 Pripomínam, že TidalCycles hrá všetko v loope, takže patterny sa opakujú dookola a všetky "záležitosti", ktoré do patternu zapíšeš sa Tidal pokúsi zahrať za rovnaký čas jedného cyklu. Počet a hustota _udalostí_ závisí len na tebe a cpu.
 
